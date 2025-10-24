@@ -119,8 +119,8 @@ const UserManagement = () => {
 
     if (searchTerm) {
       filtered = filtered.filter(user =>
-        user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.department?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
@@ -248,7 +248,7 @@ const UserManagement = () => {
                   </td>
                   <td className="px-6 py-4">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getRoleColor(user.role)}`}>
-                      {user.role.replace('_', ' ').toUpperCase()}
+                      {user.role?.replace('_', ' ').toUpperCase() || 'USER'}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm text-foreground">{user.department || "N/A"}</td>
