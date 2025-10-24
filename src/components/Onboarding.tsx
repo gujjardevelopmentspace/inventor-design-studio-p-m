@@ -52,23 +52,23 @@ export const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
     },
     {
       title: "Your Role & Permissions 👑",
-      description: `As a ${user?.role.replace('_', ' ').toLowerCase()}, you have access to:`,
+      description: `As a ${user?.role?.replace('_', ' ').toLowerCase() || 'user'}, you have access to:`,
       icon: <Shield className="w-12 h-12 text-blue-500" />,
       content: (
         <div className="space-y-4">
           <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg">
             <h3 className="font-semibold text-foreground mb-2">Your capabilities:</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {user?.permissions.slice(0, 6).map((permission, index) => (
+              {user?.permissions?.slice(0, 6).map((permission, index) => (
                 <div key={index} className="flex items-center gap-2 text-sm">
                   <CheckCircle className="w-4 h-4 text-blue-500" />
                   <span className="text-muted-foreground">
-                    {permission.replace('_', ' ').toLowerCase()}
+                    {permission?.replace('_', ' ').toLowerCase() || permission}
                   </span>
                 </div>
               ))}
             </div>
-            {user?.permissions.length > 6 && (
+            {user?.permissions?.length > 6 && (
               <div className="text-xs text-muted-foreground mt-2">
                 +{user.permissions.length - 6} more permissions
               </div>

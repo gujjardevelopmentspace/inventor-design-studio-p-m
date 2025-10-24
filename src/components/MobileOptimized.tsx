@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Menu, X, Search, User } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { getUserInitials, formatUserRole } from '../utils/safeStringUtils';
 
 export const MobileOptimized = () => {
   const { user } = useAuth();
@@ -72,12 +73,12 @@ export const MobileOptimized = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                     <span className="text-sm font-medium text-primary-foreground">
-                      {user?.name?.charAt(0).toUpperCase()}
+                      {getUserInitials(user?.name)}
                     </span>
                   </div>
                   <div>
-                    <div className="font-medium text-foreground">{user?.name}</div>
-                    <div className="text-sm text-muted-foreground">{user?.role.replace('_', ' ')}</div>
+                    <div className="font-medium text-foreground">{user?.name || 'User'}</div>
+                    <div className="text-sm text-muted-foreground">{formatUserRole(user?.role)}</div>
                   </div>
                 </div>
               </div>

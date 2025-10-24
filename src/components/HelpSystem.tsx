@@ -68,7 +68,7 @@ export const HelpSystem = () => {
       id: 4,
       title: 'Understanding your role and permissions',
       category: 'getting-started',
-      content: `As a ${user?.role.replace('_', ' ').toLowerCase()}, learn what you can access and do.`,
+      content: `As a ${user?.role?.replace('_', ' ').toLowerCase() || 'user'}, learn what you can access and do.`,
       difficulty: 'Beginner',
       readTime: '2 min'
     },
