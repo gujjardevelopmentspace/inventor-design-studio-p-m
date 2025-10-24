@@ -70,3 +70,4 @@ export const getUserInitials = (name: string | null | undefined): string => {
   const firstChar = safeCharAt(name, 0);
   return safeToUpperCase(firstChar) || 'U';
 };
+
